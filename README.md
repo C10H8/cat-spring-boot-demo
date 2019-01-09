@@ -1,5 +1,6 @@
 [TOC]
 
+
 # 项目介绍
 
 [项目地址](https://github.com/dianping/cat)
@@ -10,7 +11,7 @@
 # 实战
 > 关于项目介绍的文章已经很多了，现在想办法把服务搭建起来，看看项目效果如何，是否能达到自己的项目需求。未来方便起见，使用docker部署。
 
-机器配置说明：
+我的机器配置(腾讯云主机)：
 * 1c2g
 * Centos 7
 * Docker version 18.09.0, build 4d60db4
@@ -177,13 +178,12 @@ Cat.logEvent("URL.Server", "serverIp", Event.SUCCESS, "ip=${serverIp}");
 # 失败事件
 Cat.logError(e);
 ```
-* Metric (记录业务指标)
+* Metric (监控业务指标)
 ```
-
+Cat.logMetricForCount("register");
+Cat.logMetricForCount("UserCount", 3);
+Cat.logMetricForDuration("UserCount", 3);
 ```
-
-
-* 
 
 ## 4. demo中使用到的 [集成组件](https://github.com/dianping/cat/tree/master/integration) 
 
@@ -194,8 +194,6 @@ Cat.logError(e);
   - shop/v1 shop/v2 等不会自动到/shop/v{num}
 
 * [Log4j2配置](https://github.com/dianping/cat/tree/master/integration/log4j2)
-
-
 
 ## CAT报表
 * [Transaction报表](https://github.com/dianping/cat/blob/master/cat-doc/posts/ch1-report/transaction.md): 监控一段代码 `运行次数`，`OPS`，`错误次数`，`失败率`，`响应时间统计（平均影响时间、Tp分位值）`等等。
@@ -210,10 +208,16 @@ Cat.logError(e);
 * [Business报表](https://github.com/dianping/cat/blob/master/cat-doc/posts/ch1-report/business.md)： 偏重`业务指标`, 如`订单数`，`新注册用户数`
 ![](https://i.loli.net/2019/01/09/5c35ca8877e80.png)
 
+
+
+[项目源代码 Github](https://github.com/C10H8/cat-spring-boot-demo)
+
 # 参考
 1. [Githup 介绍](https://github.com/dianping/cat)
 2. [Docker 启动部分参考](https://github.com/dianping/cat/blob/master/cat-doc/posts/ch4-server/README.md)
-2. [大众点评Cat监控系统的部署与操作说明](https://my.oschina.net/yanyimin/blog/1517724)
-3. [MySQL docker 5.7.6 and later fails to initialize database](https://github.com/docker-library/mysql/issues/69)
-4. [美团开源监控框架CAT-Spring Boot Demo](https://blog.csdn.net/chentravelling/article/details/84780086)
-5. [深度剖析开源分布式监控CAT](https://tech.meituan.com/CAT_in_Depth_Java_Application_Monitoring.html)
+3. [大众点评Cat监控系统的部署与操作说明](https://my.oschina.net/yanyimin/blog/1517724)
+4. [MySQL docker 5.7.6 and later fails to initialize database](https://github.com/docker-library/mysql/issues/69)
+5. [美团开源监控框架CAT-Spring Boot Demo](https://blog.csdn.net/chentravelling/article/details/84780086)
+6. [深度剖析开源分布式监控CAT](https://tech.meituan.com/CAT_in_Depth_Java_Application_Monitoring.html)
+7. [Cat 在线demo](http://unidal.org/cat/s/config?op=projects)  user: admin  pw: admin
+
